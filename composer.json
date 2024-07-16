@@ -1,0 +1,17 @@
+{
+    "name": "pc/blogapp",
+    "description": "This Is a Blog APP build using PHP OOP and MVC project structure",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Pc\\Blogapp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AdiSalL",
+            "email": "adiefsal@gmail.com"
+        }
+    ],
+    "require": {}
+}
