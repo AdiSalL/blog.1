@@ -15,7 +15,7 @@ class BlogRepository {
     
     public $blogPosts = [];
 
-    public function showAll():?BlogResponse {
+    public function showAll():?array {
         $statement = $this->connection->prepare("SELECT 
                 posts.id AS post_id, 
                 posts.title, 
@@ -35,24 +35,24 @@ class BlogRepository {
         ");
         $statement->execute();
         try {
-            if($row = $statement->fetch()) {
-          
-
-                $blogPost = new BlogResponse();
-                $blogPost->id = $row["post_id"]                                         ;
-                $blogPost->title = $row["title"];
-                $blogPost->content = $row["content"];
-                $blogPost->author = $row["author"];
-                $blogPost->created_at = $row["created_at"];
-                $blogPost->categories = $row["category_name"];
-                $blogPost->tags = $row["tag_name"];
-           
-                $blogPosts[] = $blogPost;
+            if($rows = $statement->fetchAll()) {
+                foreach ($rows as $row) {
+                    $blogPost = new BlogResponse();
+                    $blogPost->id = $row["post_id"];
+                    $blogPost->title = $row["title"];
+                    $blogPost->content = $row["content"];
+                    $blogPost->author = $row["author"];
+                    $blogPost->created_at = $row["created_at"];
+                    $blogPost->categories = $row["category_name"];
+                    $blogPost->tags = $row["tag_name"];
+        
+                    $blogPosts[] = $blogPost;
+                }
             }else {
                 return null;
             }
     
-            return $blogPost;
+            return $blogPosts;
         }finally {
             $statement->closeCursor();
         }
