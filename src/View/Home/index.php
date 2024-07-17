@@ -22,6 +22,7 @@
 <body>
     <nav>
         <h1>Tulisan Adi Salafudin, Selamat datang di <?= $model["title"]?></h1>
+
     </nav>
 </body>
 </html>
