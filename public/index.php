@@ -7,7 +7,7 @@ use Pc\Blogapp\Controller\BlogController;
 
 
 Router::add("GET", "/", HomeController::class , "index");
-Router::add("GET", "/post/{id}", BlogController::class , "showBlog");
+Router::add("GET", "/post", BlogController::class , "showBlog");
 
 
 Router::run();

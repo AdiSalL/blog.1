@@ -13,4 +13,8 @@ class BlogService {
         return $this->blogRepository->showAll();
     }
 
+    public function showById() {
+        
+    }
+
 }
