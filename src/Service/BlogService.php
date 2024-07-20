@@ -2,6 +2,8 @@
 
 namespace Pc\Blogapp\Service;
 use Pc\Blogapp\Repository\BlogRepository;
+use Pc\Blogapp\Model\BlogResponse;
+
 
 class BlogService {
     private BlogRepository $blogRepository;
@@ -13,8 +15,8 @@ class BlogService {
         return $this->blogRepository->showAll();
     }
 
-    public function showById() {
-        
+    public function showById(int $id): ?BlogResponse {
+        return $this->blogRepository->showById($id);
     }
 
 }

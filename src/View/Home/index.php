@@ -1,68 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($model["title"]) ?></title>
-    <style>
-        nav {
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 10px 0;
-        }
 
-        nav h1 {
-            color: white;
-            text-align: center;
-            margin: 0;
-        }
+<div class="max-w-full w-full flex items-center flex-col">
 
-        .content {
-            padding: 20px;
-        }
+<div class="hero min-h-96">
+  <div class="hero-content text-center">
+    <div class="max-w-md">
+        <h1 class="text-3xl font-bold">
+            Hi, Selamat Datang Di Blog Saya !
+        </h1>
+      <p class="py-6">
+        Blog ini memberikan tulisan saya mengenai berbagai macam hal yang ada di dunia.
+      </p>
+    </div>
+  </div>
+</div>
 
-        .blog-post {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .blog-post h2 {
-            margin-top: 0;
-        }
-
-        .blog-post p {
-            margin-bottom: 5px;
-        }
-
-        .blog-post .author {
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <h1>Selamat datang di <?= htmlspecialchars($model["title"]) ?></h1>
-    </nav>
-
-    <div class="content">
+    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-4 mt-10 max-w-screen-2xl w-full px-5">
         <?php if (!empty($model["blogs"])): ?>
             <?php foreach ($model["blogs"] as $blog): ?>
-                <div class="blog-post">
-                    <h2><?= htmlspecialchars($blog->title) ?></h2>
-                    <p><?= htmlspecialchars($blog->content) ?></p>
-                    <p class="author"><strong>Author:</strong> <?= htmlspecialchars($blog->author) ?></p>
-                    <p><strong>Posted on:</strong> <?= htmlspecialchars($blog->created_at) ?></p>
-                    <p><strong>Category:</strong> <?= htmlspecialchars($blog->categories) ?></p>
-                    <p><strong>Tags:</strong> <?= htmlspecialchars($blog->tags) ?></p>
+                <div class="blog-post flex gap-5 flex-col flex-1">
+                    <div class="header">
+                        <h2 class="text-2xl font-bold"><?= htmlspecialchars($blog->title) ?></h2>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                        <p><strong></strong> <?= htmlspecialchars($blog->created_at) ?></p>
+                        <p><strong>author:</strong> <?= htmlspecialchars($blog->author) ?></p>
+                    </div>
+                    <div class="max-w-content">
+                        <a class="btn w-full" href="post/<?= htmlspecialchars($blog->id)?>">Read More</a>
+                    </div>
                 </div>
+       
             <?php endforeach; ?>
         <?php else: ?>
             <p>No blog posts available.</p>
         <?php endif; ?>
     </div>
-</body>
-</html>
+
+</div>
