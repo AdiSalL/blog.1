@@ -5,10 +5,10 @@
   <div class="hero-content text-center">
     <div class="max-w-md">
         <h1 class="text-3xl font-bold">
-            Hi, Selamat Datang Di Blog Saya !
+            <?php echo $model["description"]; ?><br>
         </h1>
       <p class="py-6">
-        Blog ini memberikan tulisan saya mengenai berbagai macam hal yang ada di dunia.
+        Blog Programmer Yang Suka Dengan Berbagai Macam Hal Di Dunia Ini.
       </p>
     </div>
   </div>
@@ -19,14 +19,14 @@
             <?php foreach ($model["blogs"] as $blog): ?>
                 <div class="blog-post flex gap-5 flex-col flex-1">
                     <div class="header">
-                        <h2 class="text-2xl font-bold"><?= htmlspecialchars($blog->title) ?></h2>
+                        <h2 class="text-2xl font-bold"><?= htmlspecialchars($blog["title"]) ?></h2>
                     </div>
                     <div class="flex flex-row justify-between">
-                        <p><strong></strong> <?= htmlspecialchars($blog->created_at) ?></p>
-                        <p><strong>author:</strong> <?= htmlspecialchars($blog->author) ?></p>
+                        <p><strong></strong> <?= htmlspecialchars($blog["created_at"]) ?></p>
+                        <p><strong>author:</strong> <?= htmlspecialchars($blog["author"]) ?></p>
                     </div>
                     <div class="max-w-content">
-                        <a class="btn w-full" href="post/<?= htmlspecialchars($blog->id)?>">Read More</a>
+                        <a class="btn w-full" href="post/<?= htmlspecialchars($blog["id"])?>">Read More</a>
                     </div>
                 </div>
        

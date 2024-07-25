@@ -50,8 +50,12 @@
 </label>
         </div>
         <div class="w-1/2 mx-auto">
-            <input type="submit" class="btn btn-ghost bg-slate-100 w-full" value="Register" o=>
+            <input type="submit" class="btn btn-ghost btn btn-ghost bg-neutral text-white w-full" value="Register" o=>
         </div>
 </form>
+<ul class="flex flex-col md:flex-row justify-center items-center hover:bg-base-100 hover:text-blue-500">
+            <a href="/user/login">Login If You'are Have An Account</a>
+        </ul>
+
     </div>
 </div>

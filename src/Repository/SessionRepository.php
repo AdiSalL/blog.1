@@ -1,0 +1,45 @@
+<?php
+
+namespace Pc\Blogapp\Repository;
+use Pc\Blogapp\Domain\Session;
+
+class SessionRepository {
+
+    private \PDO $connection;
+
+    public function __construct($connection) {
+        $this->connection = $connection;
+    }
+
+    public function save(Session $session):Session {
+        $statement = $this->connection->prepare("INSERT INTO sessions(id, user_id) VALUES (?, ?)");
+        $statement->execute([$session->id , $session->userId]);
+        return $session;
+    }
+
+    public function findById(string $id): ?Session {
+        $statement = $this->connection->prepare("SELECT id, user_id FROM sessions WHERE id = ?");
+        $statement->execute([$id]);
+        
+        if($row = $statement->fetch()) {
+            $session = new Session();
+            $session->id = $row["id"];
+            $session->userId = $row["user_id"];
+            return $session;
+        }else {
+            return null;
+        }
+
+    }
+
+    public function deleteById(string $id):void {
+        $statement = $this->connection->prepare("DELETE FROM sessions WHERE id = ?");
+        $statement->execute([$id]);
+    }
+
+    public function deleteAll() {
+        $statement = $this->connection->exec("DELETE FROM sessions");
+        return $statement;
+    }
+
+}

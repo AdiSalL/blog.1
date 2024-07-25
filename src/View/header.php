@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ketikanadi.com</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="/css/output.css" rel="stylesheet">
 </head>
 <body class="font-poppins">
 <div class="navbar bg-base-100 border-b-2">
@@ -28,14 +28,19 @@
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Homepage</a></li>
+        <li><a href="/">Homepage</a></li>
         <li><a>Portfolio</a></li>
         <li>
           <details>
       <summary>User</summary>
       <ul>
-        <li><a href="/user/register">Register</a></li>
-        <li><a href="/user/login">Login</a></li>
+        <?php if(isset($_COOKIE["X-BLOGADI-SESSION"])):?>
+          <li><a href="/user/logout">Log Out</a></li>
+        <?php elseif(!isset($_COOKIE["X-BLOGADI-SESSION"])):?>
+          <li><a href="/user/register">Register</a></li>
+          <li><a href="/user/login">Login</a></li>
+        <?php endif?>
+  
       </ul>
     </details>
         </li>
@@ -80,11 +85,11 @@
     <button class="btn btn-ghost btn-circle">
     <label class="swap swap-rotate">
   <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" />
+  <input type="checkbox" id="themeBtn"/>
 
   <!-- sun icon -->
   <svg
-    class="swap-on h-5 w-5"
+    class="swap-on h-5 w-5 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path
@@ -93,7 +98,7 @@
 
   <!-- moon icon -->
   <svg
-    class="swap-off h-5 w-5"
+    class="swap-off h-5 w-5 fill-current"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path

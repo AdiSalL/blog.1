@@ -12,11 +12,23 @@ class BlogService {
     } 
     
     public function showAllPosts() {
-        return $this->blogRepository->showAll();
+        return $this->blogRepository->getBlogs();
     }
 
     public function showById(int $id): ?BlogResponse {
         return $this->blogRepository->showById($id);
+    }
+
+    public function showCategories(){
+        return $this->blogRepository->showCategory();
+    }
+
+    public function showTags(){
+        return $this->blogRepository->showTag();
+    }
+
+    public function addPost($post, $categoryIds, $tagIds){
+        return $this->blogRepository->addPost($post, $categoryIds, $tagIds);
     }
 
 }

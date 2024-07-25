@@ -49,12 +49,13 @@
 </label>
         </div>
         <div class="w-1/2 mx-auto">
-            <input type="submit" class="btn btn-ghost bg-slate-100 w-full" value="Login">
+            <input type="submit" class="btn btn-ghost bg-neutral text-white w-full" value="Login">
         </div>
+        
 </form>
 
-        <ul class="flex flex-col md:flex-row justify-between">
-            <li><input type="text" class="btn btn-ghost" value="Login With Google"></li>
+        <ul class="flex flex-col md:flex-row justify-evenly items-center">
+            <li><a href="/"><img class="btn btn-ghost" src="/img/7123025_logo_google_g_icon.png" alt="google_Logo"></a></li>
             <li><input type="text" class="btn btn-ghost" value="Login With Facebook"></li>
             
         </ul>
